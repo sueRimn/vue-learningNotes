@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="src/vue.js"></script>
+    <style>
+        .red{color: red;}
+        #app div{
+            -display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+       <input 
+       v-for="item in tabData" :key="item.id" 
+       type="button" 
+       v-bind:value="item.title"
+       >
+       <div v-for="item in tabData" :key="item.id">
+            <p v-for="option in item.list" :key="item.id">{{option.subTitle}}</p>
+       </div>
+    </div>
+    <script>
+        let tabData = [
+            {
+                title:"新闻",
+                list:[
+                    {
+                        subTitle:"今天天气很好"
+                    },
+                    {
+                        subTitle:"今天天气很好"
+                    },
+                    {
+                        subTitle:"今天天气很好"
+                    },
+                ]
+            },
+            {
+                title:'娱乐',
+                list:[
+                    {
+                        subTitle:'结婚了',
+                    },
+                    {
+                        subTitle:'出轨了',
+                    },
+                    {
+                        subTitle:'离婚了',
+                    },
+                ]
+            },
+            {
+                title:'体育',
+                list:[
+                    {
+                        subTitle:'奥运冠军'
+                    },
+                    {
+                        subTitle:'美国惨败'
+                    },
+                    {
+                        subTitle:'金牌第一'
+                    },
+                ]
+            }
+        ]
+        let buttons = ['按钮1','按钮2','按钮3'];
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                tabData
+            }
+        })
+    </script>
+</body>
+</html>
